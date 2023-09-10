@@ -16,8 +16,8 @@ bun install
 # run the dev server
 bun dev
 
-
 # build
+bun build:bun
 ```
 
 
@@ -25,22 +25,22 @@ bun dev
 
 see the docs for the test runner: https://bun.sh/docs/cli/test
 
-```
+```bash
 bun test
 ```
 
 ## Build with docker
 
-```
+```bash
 # build the app
-`npm run build`
+bun build:bun
 
 # build with docker
-`docker build . --tag bun-express`
+docker build . --tag bun-express
 
 # start the docker container
-`docker run -d -p 3000:3000 bun-express`
+docker run -d -p 3000:3000 bun-express
 
 # view it running on localhost
-`curl localhost:3000`
+curl localhost:3000
 ```
