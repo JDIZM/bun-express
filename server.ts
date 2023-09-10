@@ -1,5 +1,4 @@
 import express from "express";
-import dotenv from "dotenv";
 import { pinoHttp } from "pino-http";
 import { test } from "./helpers";
 
@@ -8,9 +7,7 @@ const { logger } = pinoHttp();
 const env = Bun.env.NODE_ENV || "development";
 const port = Bun.env.PORT || 3000;
 
-if (env !== "production") {
-  dotenv.config();
-}
+console.log(`Bun is running in ${env}`);
 
 const app = express();
 
@@ -20,8 +17,8 @@ app.use(
   })
 );
 
+
 app.get("/", (req, res) => {
-  logger.info("hello world");
   res.send(`Bun + Express + TypeScript Server ${test}`);
 });
 
