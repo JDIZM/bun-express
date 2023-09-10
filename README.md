@@ -19,3 +19,11 @@ bun server.ts
 # or
 ```
 
+### Testing
+
+see the docs for the test runner: https://bun.sh/docs/cli/test
+
+```
+bun test
+```
+
