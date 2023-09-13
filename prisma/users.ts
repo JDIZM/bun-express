@@ -1,17 +1,20 @@
 import { PrismaClient } from "@prisma/client";
-import bcrypt from "bcrypt";
 
 export async function seedUsers(prisma: PrismaClient): Promise<void> {
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash("example123", salt);
+  const examplePassword = "example123";
+  const hashedPassword = await Bun.password.hash(examplePassword);
+
+  const isMatch = await Bun.password.verify(examplePassword, hashedPassword);
+
+  console.log("password isMatch", isMatch);
 
   const user = await prisma.users.upsert({
-    where: { email: "fred@flintstones.com" },
+    where: { email: "barney@flintstones.com" },
     update: {},
     create: {
       username: "test",
       password: hashedPassword,
-      email: "fred@flintstones.com",
+      email: "barney@flintstones.com",
       claims: ["admin", "user"]
     }
   });
